@@ -18,7 +18,7 @@ export const addCartItems = async (req, res) => {
             if(cartItems===null)
             {
                let updatedcartItems=cart.create({"userId":req.body.userId},{"items":req.body.items})
-                // console.log("if",updatedcartItems,req.body)
+                console.log(updatedcartItems)
                 res.status(200).json(updatedcartItems);
 
             } 

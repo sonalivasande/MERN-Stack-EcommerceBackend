@@ -12,13 +12,12 @@ export const getCartItems = async (req, res) => {
 };
 export const addCartItems = async (req, res) => {
 	try {
-		// console.log(req.body)
+	
 		const cartItems = await cart.findOne({"userId":req.body.userId});
-		console.log(cartItems===null)
             if(cartItems===null)
             {
                let updatedcartItems=cart.create(req.body)
-                console.log(updatedcartItems)
+                // console.log(updatedcartItems)
                 res.status(200).json(updatedcartItems);
 
             } 
@@ -27,8 +26,7 @@ export const addCartItems = async (req, res) => {
 		
 				let response=updatecart(req)
 				res.status(200).json(response);
-
-               
+ 
             }
 	}
      catch (error) {
@@ -36,7 +34,18 @@ export const addCartItems = async (req, res) => {
 	}
 };
 async function updatecart(req){
-	 var  updatedcartItems=await cart.updateOne({"userId":req.body.userId},{"items":req.body.items})
+	const { firstName,lastName,emailId,userId,phoneNumber,items } =
+		req.body;
+
+	const updatedcart = {
+        firstName,
+        lastName,
+        emailId,
+        userId,
+        phoneNumber,
+		items
+	};
+	 var  updatedcartItems=await cart.updateOne({"userId":req.body.userId},updatedcart)
 	// console.log(updatedcartItems,req.body)
 	return updatedcartItems
 

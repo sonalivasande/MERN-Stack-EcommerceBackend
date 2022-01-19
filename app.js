@@ -4,9 +4,10 @@ import('./db/connection.js');
 
 import productRoutes from './routes/productRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
-import reviewRoutes from './routes/cartRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-// const {cartRoutes} = require('./routes/cartRoutes')
+import reviewRoutes from './routes/reviewRoutes.js';
+
 
 const app = express();
 app.use(express.json());
@@ -22,9 +23,9 @@ const port = process.env.PORT;
 
 app.use('/product', productRoutes);
 app.use('/order', orderRoutes);
-app.use('/cart', reviewRoutes);
+app.use('/cart', cartRoutes);
 app.use('/user', userRoutes);
-// app.use('/cart', cartRoutes);
+app.use('/review', reviewRoutes);
 
 app.listen(port, () => {
 	console.log(`Server is running on port http://localhost:${port}/product`);

@@ -2,9 +2,7 @@ import { User } from '../model/userShema.js';
 
 export const getUsers = async (req, res) => {
 	try {
-		console.log(req)
 		const currentUser = await User.findOne({$or : [{"emailId":req.body.Username},{"phoneNumber":req.body.Username},{"username":req.body.Username}]});
-		console.log(currentUser)
 		if(currentUser.password==req.body.Password)
 		{
 			res.status(200).json(currentUser);

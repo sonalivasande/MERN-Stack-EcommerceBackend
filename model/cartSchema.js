@@ -7,6 +7,26 @@ const cartSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+    firstName:{
+        type: String,
+		required: true,
+
+    },
+    lastName:{
+        type: String,
+		required: true,
+
+    },
+    emailId:{
+        type: String,
+		required: true,
+
+    },
+    phoneNumber:{
+        type: String,
+		required: true,
+
+    },
     items:{
         type:Object,
         required:true

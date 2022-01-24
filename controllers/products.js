@@ -12,7 +12,7 @@ export const getProducts = async (req, res) => {
 };
 export const getSortProducts = async (req, res) => {
 	try {
-		const allProducts = await Product.find({"productCategory": req.body.productCategory}).sort({"productPrice":req.body.sort});
+		const allProducts = await Product.find(req.body.category).sort({"productPrice":req.body.sort});
 
 		res.status(200).json(allProducts);
 	} catch (error) {
